@@ -6,7 +6,7 @@ var response string
 
 /*
 *fizzBuzz
- */
+*/
 func fizzBuzz() func(int) string {
     ret := ""
     return func(i int) string {
@@ -26,7 +26,7 @@ func fizzBuzz() func(int) string {
 
 /*
 *handle
- */
+*/
 func Handler(inputNum int) string {
     fb := fizzBuzz()
     return fb(inputNum)

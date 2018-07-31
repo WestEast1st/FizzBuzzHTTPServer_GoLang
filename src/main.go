@@ -1,39 +1,43 @@
 package main
 
 import (
-	//standard
-	"fmt"
-	"net/http"
-	"strconv"
-
-	//github
-	"github.com/gorilla/mux"
-	//Original
-	"./fizzbuzz"
+    //standard
+    "fmt"
+    "net/http"
+    "strconv"
+    //github
+    "github.com/gorilla/mux"
+    //Original
+    "./fizzbuzz"
 )
 
-var roure = mux.NewRouter()
+var route = mux.NewRouter()
 
 /*
 *　controller
- */
+*   helloController : top
+*   fizzBuzzController : fizzBuzz
+*/
 func helloController(writer http.ResponseWriter, request *http.Request) {
     fmt.Fprint(writer, "<h1>Hello Fizz Buzz!</h1>")
 }
 
 func fizzBuzzController(writer http.ResponseWriter, request *http.Request) {
     vars := mux.Vars(request)
-	inputNum, err := strconv.Atoi(vars["num"])
-	if err != nil {
+    inputNum, err := strconv.Atoi(vars["num"])
+    //Processing other than int.
+    if err != nil {
         StatusBadRequest(writer)
         return
     }
-	fmt.Fprint(writer, "<h1>"+fizzbuzz.Handler(inputNum)+"</h1>")
+    //success
+    fmt.Fprint(writer, "<h1>"+fizzbuzz.Handler(inputNum)+"</h1>")
 }
 
 /*
 * error
- */
+*   StatusBadRequest : 400 invalid number
+*/
 func StatusBadRequest(writer http.ResponseWriter) {
     writer.WriteHeader(http.StatusBadRequest)
     fmt.Fprint(writer, "<h1>invalid number</h1>")
@@ -41,10 +45,10 @@ func StatusBadRequest(writer http.ResponseWriter) {
 
 /*
 * HTTP Route
- */
+*/
 func httpRoute() {
-    roure.HandleFunc("/", helloController)
-    roure.HandleFunc("/fizzbuzz/{num}", fizzBuzzController)
+    route.HandleFunc("/",               helloController)
+    route.HandleFunc("/fizzbuzz/{num}", fizzBuzzController)
 }
 
 /*
