@@ -6,8 +6,8 @@ import (
 	"net/http"
 	"strconv"
 	//github
-	"github.com/WestEast1st/FizzBuzzHTTPServer_GoLang/models"
 	"github.com/gorilla/mux"
+    "github.com/WestEast1st/FizzBuzzHTTPServer_GoLang/modules"
 )
 
 var route = mux.NewRouter()
@@ -30,7 +30,7 @@ func fizzBuzzController(writer http.ResponseWriter, request *http.Request) {
 		return
 	}
 	//success
-	fmt.Fprint(writer, "<h1>"+models.Handler(inputNum)+"</h1>")
+	fmt.Fprint(writer, "<h1>"+modules.Handler(inputNum)+"</h1>")
 }
 
 /*
