@@ -7,7 +7,7 @@ import (
 	"strconv"
 	//github
 	"github.com/gorilla/mux"
-    "github.com/WestEast1st/FizzBuzzHTTPServer_GoLang/modules"
+	"github.com/WestEast1st/FizzBuzzHTTPServer_GoLang/modules"
 )
 
 var route = mux.NewRouter()
