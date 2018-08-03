@@ -1,4 +1,4 @@
-# FizzBuzzGO
+# FizzBuzzGO _ Security Camp 2018
 ## 自分用メモ
 ### Go 基礎
 - 自分メモ<br>
